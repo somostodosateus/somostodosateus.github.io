@@ -15,7 +15,7 @@
 
     <style>
 
-/* BLOQUEIO DE SELEÇÃO DE TEXTO */
+        /* BLOQUEIO DE SELEÇÃO DE TEXTO */
         body {
             -webkit-user-select: none; /* Safari */
             -ms-user-select: none; /* IE/Edge */
@@ -136,38 +136,32 @@
             font-size: 1.8rem;
         }
 
-/* Substitua o bloco do #inicio e do .hero-overlay atual no seu CSS por este */
+        /* 4. HERO SECTION */
+        #inicio {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background-color: var(--black-pure);
+            background-image: url('sta.png'); 
+            background-size: 70%; 
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed; 
+            text-align: center;
+            margin-top: 0; 
+        }
 
-#inicio {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    background-color: var(--black-pure);
-    /* Puxando o seu isotipo diretamente */
-    background-image: url('sta.png'); 
-    /* Tamanho gigante para atuar como textura de fundo, não como logo de cabeçalho */
-    background-size: 70%; 
-    background-repeat: no-repeat;
-    background-position: center;
-    /* Efeito Parallax: o fundo fica fixo enquanto o texto rola por cima */
-    background-attachment: fixed; 
-    text-align: center;
-    margin-top: 0; 
-}
-
-.hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* Máscara radial agressiva: escurece as bordas e deixa o centro levemente mais claro */
-    /* Isso transforma o branco estourado do "SA" em uma marca d'água sutil e premium */
-    background: radial-gradient(circle, rgba(10,10,10,0.85) 0%, rgba(0,0,0,0.98) 100%);
-    z-index: 1;
-}
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(10,10,10,0.85) 0%, rgba(0,0,0,0.98) 100%);
+            z-index: 1;
+        }
 
         .hero-content {
             position: relative;
@@ -256,6 +250,7 @@
             padding: 50px 30px;
             text-align: center;
             transition: transform 0.4s ease, border-color 0.4s ease;
+            height: 100%;
         }
 
         .card:hover {
@@ -286,6 +281,7 @@
             display: flex;
             flex-direction: column;
             transition: transform 0.4s ease;
+            height: 100%;
         }
 
         .ebook-card:hover {
@@ -400,8 +396,25 @@
             transform: translateY(0);
         }
 
-        /* 11. RESPONSIVIDADE MOBILE */
+        /* 11. RESPONSIVIDADE MOBILE OTIMIZADA (O Pulo do Gato) */
         @media (max-width: 768px) {
+            
+            /* Ajuste de espaçamento para ganhar área útil na tela pequena */
+            .container {
+                padding: 0 12px;
+            }
+
+            /* Redução Global de Letras no Mobile */
+            p {
+                font-size: 0.95rem !important; 
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+                margin-bottom: 20px;
+            }
+
+            /* Navbar Mobile */
             .nav-links {
                 display: none;
                 flex-direction: column;
@@ -419,14 +432,61 @@
             .hamburger {
                 display: block;
             }
+
+            /* Hero Mobile */
             .hero-content h1 {
-                font-size: 3rem;
+                font-size: 2.8rem;
             }
+            .hero-content p {
+                font-size: 1.1rem !important;
+            }
+
+            /* GRIDS 3x1 NO MOBILE: Forçando o layout lado a lado */
             .grids-3 {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 12px; /* Reduz o buraco entre os cards para eles caberem */
+                margin-top: 30px;
             }
+
+            /* Ajustes Finos nos Cards de PAUTAS para caber no 3x1 */
+            .card {
+                padding: 15px 8px;
+            }
+            .card-icon {
+                font-size: 1.8rem;
+                margin-bottom: 10px;
+            }
+            .card h3 {
+                font-size: 0.85rem;
+                letter-spacing: 0;
+            }
+            .card p {
+                font-size: 0.7rem !important;
+                margin-top: 8px;
+                line-height: 1.3;
+            }
+
+            /* Ajustes Finos nos Cards de EBOOKS para caber no 3x1 */
+            .ebook-info {
+                padding: 10px 6px;
+            }
+            .ebook-info h3 {
+                font-size: 0.75rem;
+                margin-bottom: 8px;
+                letter-spacing: 0;
+            }
+            .btn-comprar {
+                padding: 8px 4px;
+                font-size: 0.7rem;
+                margin-top: auto;
+            }
+
+            /* Loja Mobile */
             .em-breve-text {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
+            }
+            .loja-icon {
+                font-size: 3rem;
             }
         }
     </style>
@@ -466,17 +526,17 @@
         <div class="container fade-in sobre-wrapper">
             <h2 class="section-title">Sobre nós</h2>
             <p style="margin-bottom: 20px;">
-    Somos uma organização ateísta. Sim, pasmem: uma <strong>guerrilha de hereges</strong> dedicada a produzir conteúdo crítico e cirurgicamente sarcástico sobre religião para a internet. 
-</p>
-<p style="margin-bottom: 20px;">
-    Nossa tática de combate envolve um pouco de tudo. Disparamos desde <strong>memes imbecis</strong> — minuciosamente calculados para você arruinar o almoço de domingo da família — até notícias super embasadas que esfregam na sua cara a distopia da nossa amada nação, expondo o "amor cristão" na sua essência. E detalhe: temos <strong>alergia profunda a qualquer dogma</strong>, seja ele adorado no altar ou idolatrado no palanque. Nosso único lado é o da lógica.
-</p>
-<p style="margin-bottom: 20px;">
-    Nosso objetivo final é te armar para essa revolução intelectual. Entregamos armas bem mais chatas e letais, tipo a <strong>"razão" e o "ceticismo"</strong>. O arsenal perfeito para você tentar o verdadeiro milagre: convencer aquele seu tio fanático de que a Terra não é plana e que o político dele não é o Messias. Boa sorte com essa missão suicida, a propósito.
-</p>
-<p>
-    E como toda revolução precisa pagar seus boletos (afinal, o capitalismo venceu), fomos além do ativismo de trincheira. Oferecemos <strong>obras e materiais de estudo estratégicos</strong> e, muito em breve, lançaremos nossa loja oficial. Roupas e acessórios exclusivos para quem tem o orgulho — e a absoluta audácia — de <strong>pensar livre</strong>.
-</p>
+                Somos uma organização ateísta. Sim, pasmem: uma <strong>guerrilha de hereges</strong> dedicada a produzir conteúdo crítico e cirurgicamente sarcástico sobre religião para a internet. 
+            </p>
+            <p style="margin-bottom: 20px;">
+                Nossa tática de combate envolve um pouco de tudo. Disparamos desde <strong>memes imbecis</strong> — minuciosamente calculados para você arruinar o almoço de domingo da família — até notícias super embasadas que esfregam na sua cara a distopia da nossa amada nação, expondo o "amor cristão" na sua essência. E detalhe: temos <strong>alergia profunda a qualquer dogma</strong>, seja ele adorado no altar ou idolatrado no palanque. Nosso único lado é o da lógica.
+            </p>
+            <p style="margin-bottom: 20px;">
+                Nosso objetivo final é te armar para essa revolução intelectual. Entregamos armas bem mais chatas e letais, tipo a <strong>"razão" e o "ceticismo"</strong>. O arsenal perfeito para você tentar o verdadeiro milagre: convencer aquele seu tio fanático de que a Terra não é plana e que o político dele não é o Messias. Boa sorte com essa missão suicida, a propósito.
+            </p>
+            <p>
+                E como toda revolução precisa pagar seus boletos (afinal, o capitalismo venceu), fomos além do ativismo de trincheira. Oferecemos <strong>obras e materiais de estudo estratégicos</strong> e, muito em breve, lançaremos nossa loja oficial. Roupas e acessórios exclusivos para quem tem o orgulho — e a absoluta audácia — de <strong>pensar livre</strong>.
+            </p>
         </div>
     </section>
 
@@ -560,9 +620,10 @@
                 <p>Sem deuses, sem dogmas.</p>
             </div>
             <div class="footer-bottom">
-    <p>&copy; 2026 Somos todos Ateus. Todos os direitos reservados.</p>
-    <p>Fundado por <a href="https://unmoshe.github.io" target="_blank" rel="noopener noreferrer"><strong>unmoshe</strong></a></p>
-</div>
+                <p>&copy; 2026 Somos todos Ateus. Todos os direitos reservados.</p>
+                <p>Idealizado por <a href="https://unmoshe.github.io" target="_blank" rel="noopener noreferrer"><strong>unmoshe</strong></a></p>
+            </div>
+        </div>
     </footer>
 
     <script>
@@ -599,7 +660,7 @@
 
         faders.forEach(fader => appearOnScroll.observe(fader));
 
-// =========================================================
+        // =========================================================
         // SISTEMA DE BLOQUEIO DE AÇÕES DO USUÁRIO
         // =========================================================
 
@@ -632,10 +693,6 @@
         document.addEventListener('cut', event => event.preventDefault());
         document.addEventListener('paste', event => event.preventDefault());
 
-
-
     </script>
-
-
 </body>
 </html>
