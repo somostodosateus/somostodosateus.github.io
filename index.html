@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StA | Somos todos Ateus</title>
+    
+    <link rel="icon" href="icons/favicon.ico" type="image/x-icon">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Montserrat:wght@300;400;500;600&family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+
+/* BLOQUEIO DE SELEÇÃO DE TEXTO */
+        body {
+            -webkit-user-select: none; /* Safari */
+            -ms-user-select: none; /* IE/Edge */
+            user-select: none; /* Padrão */
+        }
+
+        /* 1. VARIÁVEIS GERAIS E RESET */
+        :root {
+            --black-pure: #000000;
+            --black-surface: #0a0a0a;
+            --black-card: #121212;
+            --gray-dark: #2a2a2a;
+            --gray-text: #a0a0a0;
+            --white-pure: #ffffff;
+            
+            --font-title: 'Oswald', sans-serif;
+            --font-body: 'Merriweather', serif;
+            --font-ui: 'Montserrat', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth; /* Rolagem suave ao clicar nos links */
+        }
+
+        body {
+            background-color: var(--black-pure);
+            color: var(--white-pure);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Correção do problema de âncora: impede que o título suma debaixo da navbar */
+        section {
+            scroll-margin-top: 80px; 
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 2. TIPOGRAFIA */
+        h1, h2, h3, h4 {
+            font-family: var(--font-title);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        p {
+            color: var(--gray-text);
+            font-size: 1.1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--white-pure);
+            font-family: var(--font-ui);
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--gray-text);
+        }
+
+        /* 3. NAVBAR FIXA E MODERNA */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(12px); /* Efeito de vidro moderno */
+            border-bottom: 1px solid var(--gray-dark);
+            z-index: 1000;
+            height: 80px;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-container {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* ISOTIPO Logo StA */
+        .logo {
+            font-family: var(--font-title);
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 35px;
+        }
+
+        .nav-links a {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.8rem;
+        }
+
+/* Substitua o bloco do #inicio e do .hero-overlay atual no seu CSS por este */
+
+#inicio {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background-color: var(--black-pure);
+    /* Puxando o seu isotipo diretamente */
+    background-image: url('sta.png'); 
+    /* Tamanho gigante para atuar como textura de fundo, não como logo de cabeçalho */
+    background-size: 70%; 
+    background-repeat: no-repeat;
+    background-position: center;
+    /* Efeito Parallax: o fundo fica fixo enquanto o texto rola por cima */
+    background-attachment: fixed; 
+    text-align: center;
+    margin-top: 0; 
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Máscara radial agressiva: escurece as bordas e deixa o centro levemente mais claro */
+    /* Isso transforma o branco estourado do "SA" em uma marca d'água sutil e premium */
+    background: radial-gradient(circle, rgba(10,10,10,0.85) 0%, rgba(0,0,0,0.98) 100%);
+    z-index: 1;
+}
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            color: var(--white-pure);
+            font-family: var(--font-ui);
+            font-weight: 300;
+        }
+
+        /* Redes Sociais no Hero */
+        .hero-social {
+            margin-top: 40px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .hero-social a {
+            font-size: 2rem;
+            color: var(--white-pure);
+            transition: transform 0.3s ease;
+        }
+
+        .hero-social a:hover {
+            transform: scale(1.2);
+        }
+
+        /* 5. SOBRE NÓS */
+        #sobre {
+            padding: 120px 0;
+            background-color: var(--black-pure);
+            text-align: center;
+        }
+
+        .sobre-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background-color: var(--white-pure);
+            bottom: -10px;
+            left: 25%;
+        }
+
+        /* 6. PAUTAS (Manifesto e Cards) */
+        #pautas {
+            padding: 100px 0;
+            background-color: var(--black-surface);
+            border-top: 1px solid var(--gray-dark);
+        }
+
+        .grids-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .card {
+            background-color: var(--black-pure);
+            border: 1px solid var(--gray-dark);
+            padding: 50px 30px;
+            text-align: center;
+            transition: transform 0.4s ease, border-color 0.4s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--white-pure); /* Destaque minimalista */
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 25px;
+        }
+
+        .manifesto-texto {
+            max-width: 900px;
+            margin: 0 auto 60px auto;
+            text-align: justify;
+        }
+
+        /* 7. EBOOKS */
+        #ebooks {
+            padding: 100px 0;
+            background-color: var(--black-pure);
+        }
+
+        .ebook-card {
+            background-color: var(--black-card);
+            border: 1px solid var(--gray-dark);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.4s ease;
+        }
+
+        .ebook-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--gray-text);
+        }
+
+        .ebook-cover {
+            width: 100%;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+            border-bottom: 1px solid var(--gray-dark);
+        }
+
+        .ebook-info {
+            padding: 25px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex-grow: 1;
+        }
+
+        .btn-comprar {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: var(--white-pure);
+            color: var(--black-pure);
+            font-family: var(--font-title);
+            text-transform: uppercase;
+            font-weight: 700;
+            display: block;
+            transition: all 0.3s ease;
+        }
+
+        .btn-comprar:hover {
+            background-color: var(--gray-text);
+        }
+
+        /* 8. LOJA (Em Breve com Animação) */
+        #loja {
+            padding: 150px 0;
+            background-color: var(--black-surface);
+            text-align: center;
+            border-top: 1px solid var(--gray-dark);
+            border-bottom: 1px solid var(--gray-dark);
+        }
+
+        .loja-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .loja-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: var(--gray-text);
+        }
+
+        /* Animação Pulsante para o "Em Breve" */
+        .em-breve-text {
+            font-size: 4rem;
+            font-family: var(--font-title);
+            text-transform: uppercase;
+            color: var(--white-pure);
+            letter-spacing: 5px;
+            animation: pulse-glow 2s infinite alternate;
+        }
+
+        @keyframes pulse-glow {
+            0% {
+                text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+                opacity: 0.7;
+            }
+            100% {
+                text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 0.6);
+                opacity: 1;
+                transform: scale(1.05);
+            }
+        }
+
+        /* 9. FOOTER */
+        footer {
+            background-color: var(--black-pure);
+            padding: 60px 0 20px 0;
+            text-align: center;
+        }
+
+        .footer-brand h3 {
+            font-size: 2.5rem;
+        }
+
+        .footer-bottom {
+            margin-top: 40px;
+            border-top: 1px solid var(--gray-dark);
+            padding-top: 20px;
+            font-size: 0.85rem;
+            font-family: var(--font-ui);
+        }
+
+        /* 10. ANIMAÇÕES SCROLL */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 11. RESPONSIVIDADE MOBILE */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: rgba(0, 0, 0, 0.95);
+                padding: 20px 0;
+                text-align: center;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .hamburger {
+                display: block;
+            }
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+            .grids-3 {
+                grid-template-columns: 1fr;
+            }
+            .em-breve-text {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#inicio" class="logo">StA</a>
+            <ul class="nav-links">
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#sobre">Sobre Nós</a></li>
+                <li><a href="#pautas">Pautas</a></li>
+                <li><a href="#ebooks">Ebooks</a></li>
+                <li><a href="#loja">Loja</a></li>
+            </ul>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <header id="inicio">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content fade-in">
+            <h1>Somos Todos Ateus</h1>
+            <p>Sem deuses, sem dogmas.</p>
+            <div class="hero-social">
+                <a href="https://instagram.com/somostodosateus" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://youtube.com/@somostodosateus" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://tiktok.com/@somostodosateus" target="_blank"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <section id="sobre">
+        <div class="container fade-in sobre-wrapper">
+            <h2 class="section-title">Sobre nós</h2>
+            <p style="margin-bottom: 20px;">
+    Somos uma organização ateísta. Sim, pasmem: uma <strong>guerrilha de hereges</strong> dedicada a produzir conteúdo crítico e cirurgicamente sarcástico sobre religião para a internet. 
+</p>
+<p style="margin-bottom: 20px;">
+    Nossa tática de combate envolve um pouco de tudo. Disparamos desde <strong>memes imbecis</strong> — minuciosamente calculados para você arruinar o almoço de domingo da família — até notícias super embasadas que esfregam na sua cara a distopia da nossa amada nação, expondo o "amor cristão" na sua essência. E detalhe: temos <strong>alergia profunda a qualquer dogma</strong>, seja ele adorado no altar ou idolatrado no palanque. Nosso único lado é o da lógica.
+</p>
+<p style="margin-bottom: 20px;">
+    Nosso objetivo final é te armar para essa revolução intelectual. Entregamos armas bem mais chatas e letais, tipo a <strong>"razão" e o "ceticismo"</strong>. O arsenal perfeito para você tentar o verdadeiro milagre: convencer aquele seu tio fanático de que a Terra não é plana e que o político dele não é o Messias. Boa sorte com essa missão suicida, a propósito.
+</p>
+<p>
+    E como toda revolução precisa pagar seus boletos (afinal, o capitalismo venceu), fomos além do ativismo de trincheira. Oferecemos <strong>obras e materiais de estudo estratégicos</strong> e, muito em breve, lançaremos nossa loja oficial. Roupas e acessórios exclusivos para quem tem o orgulho — e a absoluta audácia — de <strong>pensar livre</strong>.
+</p>
+        </div>
+    </section>
+
+    <section id="pautas">
+        <div class="container">
+            <div class="fade-in text-center" style="text-align: center; margin-bottom: 40px;">
+                <h2 class="section-title">Nossas Pautas</h2>
+            </div>
+            
+            <div class="manifesto-texto fade-in">
+                <p><strong>O Estado é laico.</strong> Todos os dias, assistimos sistematicamente à tentativa de aparelhamento das instituições por bancadas que buscam impor dogmas. Acreditamos que a fé é uma prerrogativa íntima, sendo inaceitável o seu uso como instrumento de coerção política. Nosso norte é a construção de uma sociedade onde a integridade intelectual e a liberdade individual sejam os únicos parâmetros inquestionáveis.</p>
+            </div>
+
+            <div class="grids-3">
+                <div class="card fade-in">
+                    <i class="fas fa-face-flushed card-icon"></i>
+                    <h3>Absurdos</h3>
+                    <p style="margin-top: 15px;">Casos documentados da barbárie e intolerância cometidas em nome do "amor" divino.</p>
+                </div>
+                <div class="card fade-in">
+                    <i class="fas fa-book-open card-icon"></i>
+                    <h3>Didático</h3>
+                    <p style="margin-top: 15px;">Doses de biologia evolutiva para esmagar o negacionismo utilizando apenas fatos.</p>
+                </div>
+                <div class="card fade-in">
+                    <i class="fas fa-newspaper card-icon"></i>
+                    <h3>Matérias</h3>
+                    <p style="margin-top: 15px;">A corrupção nua e crua dos "santos" que lucram enquanto tentam legislar sobre sua vida.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="ebooks">
+        <div class="container">
+            <div class="fade-in text-center" style="text-align: center; margin-bottom: 40px;">
+                <h2 class="section-title">Catálogo de Ebooks</h2>
+                <p style="margin-top: 10px;">Obras estratégicas para o desenvolvimento intelectual e o embate cético.</p>
+            </div>
+
+            <div class="grids-3">
+                <div class="ebook-card fade-in">
+                    <img src="https://aws-assets.kiwify.com.br/cdn-cgi/image/fit=scale-down,width=600/iWRlDEE5hlcksuA/1000070140_11bc59454a65445995425be2743da2f8.png" alt="Amém Pra Quem?" class="ebook-cover" onerror="this.onerror=null; this.src='https://via.placeholder.com/600x800/141414/a0a0a0?text=AM%C3%89M+PRA+QUEM'">
+                    <div class="ebook-info">
+                        <h3>AMÉM PRA QUEM?</h3>
+                        <a href="https://pay.kiwify.com.br/kEiuOHZ" target="_blank" class="btn-comprar">Comprar</a>
+                    </div>
+                </div>
+
+                <div class="ebook-card fade-in">
+                    <img src="https://aws-assets.kiwify.com.br/cdn-cgi/image/fit=scale-down,width=600/iWRlDEE5hlcksuA/1000062020_82e5825cb82841d48d4abdbf362d3778.jpg" alt="Como Debater Com Crente" class="ebook-cover" onerror="this.onerror=null; this.src='https://via.placeholder.com/600x800/141414/a0a0a0?text=COMO+DEBATER'">
+                    <div class="ebook-info">
+                        <h3>COMO DEBATER COM CRENTE</h3>
+                        <a href="https://pay.kiwify.com.br/MNQVMaU" target="_blank" class="btn-comprar">Comprar</a>
+                    </div>
+                </div>
+
+                <div class="ebook-card fade-in">
+                    <img src="https://aws-assets.kiwify.com.br/cdn-cgi/image/fit=scale-down,width=600/iWRlDEE5hlcksuA/1000064954_830156b1cade43baa241bb68e753e820.jpg" alt="Deus Realmente Existe?" class="ebook-cover" onerror="this.onerror=null; this.src='https://via.placeholder.com/600x800/141414/a0a0a0?text=DEUS+EXISTE'">
+                    <div class="ebook-info">
+                        <h3>DEUS REALMENTE EXISTE?</h3>
+                        <a href="https://pay.kiwify.com.br/16qYa6D" target="_blank" class="btn-comprar">Comprar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="loja">
+        <div class="container loja-container fade-in">
+            <i class="fas fa-shopping-bag loja-icon"></i>
+            <h2 class="em-breve-text">Em Breve</h2>
+            <p style="margin-top: 20px; font-size: 1.2rem;">Roupas, acessórios e manifesto para vestir o seu ceticismo.</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container fade-in">
+            <div class="footer-brand">
+                <h3>StA</h3>
+                <p>Sem deuses, sem dogmas.</p>
+            </div>
+            <div class="footer-bottom">
+    <p>&copy; 2026 Somos todos Ateus. Todos os direitos reservados.</p>
+    <p>Fundado por <a href="https://unmoshe.github.io" target="_blank" rel="noopener noreferrer"><strong>unmoshe</strong></a></p>
+</div>
+    </footer>
+
+    <script>
+        // 1. Menu Mobile (Hamburger)
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // 2. Fechar menu mobile ao clicar em um link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                if(navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+
+        // 3. Observer para Animação de Fade-In
+        const faders = document.querySelectorAll('.fade-in');
+        const appearOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        };
+        const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            });
+        }, appearOptions);
+
+        faders.forEach(fader => appearOnScroll.observe(fader));
+    </script>
+
+// =========================================================
+        // SISTEMA DE BLOQUEIO DE AÇÕES DO USUÁRIO
+        // =========================================================
+
+        // 1. Bloqueia o clique do botão direito (Context Menu)
+        document.addEventListener('contextmenu', function(event) {
+            event.preventDefault();
+        });
+
+        // 2. Intercepta e bloqueia atalhos de teclado específicos
+        document.addEventListener('keydown', function(event) {
+            // Verifica se a tecla Ctrl (Windows/Linux) ou Cmd (Mac) está pressionada
+            if (event.ctrlKey || event.metaKey) {
+                const key = event.key.toLowerCase();
+                
+                // Bloqueia Ctrl+A (Selecionar tudo), Ctrl+C (Copiar), Ctrl+X (Cortar)
+                // Também bloqueia Ctrl+S (Salvar página) e Ctrl+U (Ver código-fonte)
+                if (['a', 'c', 'x', 's', 'u'].includes(key)) {
+                    event.preventDefault();
+                }
+            }
+            
+            // Bloqueia a tecla F12 (Inspecionar Elemento / DevTools)
+            if (event.key === 'F12') {
+                event.preventDefault();
+            }
+        });
+
+        // 3. Bloqueia eventos nativos de área de transferência
+        document.addEventListener('copy', event => event.preventDefault());
+        document.addEventListener('cut', event => event.preventDefault());
+        document.addEventListener('paste', event => event.preventDefault());
+
+</body>
+</html>
