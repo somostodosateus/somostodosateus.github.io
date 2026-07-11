@@ -7,22 +7,28 @@
     
     <link rel="icon" href="icons/favicon.ico" type="image/x-icon">
 
+    <!-- PRÉ-CARREGAMENTO DE FONTES -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Montserrat:wght@300;400;500;600&family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
     
+    <!-- ÍCONES (FONT AWESOME) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
 
-        /* BLOQUEIO DE SELEÇÃO DE TEXTO */
+        /* =========================================
+           CONFIGURAÇÕES GERAIS E DE SEGURANÇA
+           ========================================= */
+
+        /* BLOQUEIO DE SELEÇÃO DE TEXTO PARA EVITAR CÓPIAS */
         body {
             -webkit-user-select: none; /* Safari */
             -ms-user-select: none; /* IE/Edge */
             user-select: none; /* Padrão */
         }
 
-        /* 1. VARIÁVEIS GERAIS E RESET */
+        /* VARIÁVEIS GERAIS (CORES E FONTES) */
         :root {
             --black-pure: #000000;
             --black-surface: #0a0a0a;
@@ -36,6 +42,7 @@
             --font-ui: 'Montserrat', sans-serif;
         }
 
+        /* RESET BÁSICO DE MARGENS */
         * {
             margin: 0;
             padding: 0;
@@ -59,13 +66,16 @@
             scroll-margin-top: 80px; 
         }
 
+        /* CONTAINER PRINCIPAL PARA ALINHAMENTO */
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
-        /* 2. TIPOGRAFIA */
+        /* =========================================
+           TIPOGRAFIA
+           ========================================= */
         h1, h2, h3, h4 {
             font-family: var(--font-title);
             text-transform: uppercase;
@@ -88,7 +98,11 @@
             color: var(--gray-text);
         }
 
-        /* 3. NAVBAR FIXA E MODERNA */
+        /* =========================================
+           ESTRUTURAS VISUAIS DA PÁGINA
+           ========================================= */
+
+        /* NAVBAR FIXA E MODERNA */
         .navbar {
             position: fixed;
             top: 0;
@@ -136,7 +150,7 @@
             font-size: 1.8rem;
         }
 
-        /* 4. HERO SECTION */
+        /* HERO SECTION (PRIMEIRA TELA) */
         #inicio {
             height: 100vh;
             display: flex;
@@ -153,6 +167,7 @@
             margin-top: 0; 
         }
 
+        /* MÁSCARA ESCURA SOBRE O FUNDO DO HERO */
         .hero-overlay {
             position: absolute;
             top: 0;
@@ -201,7 +216,7 @@
             transform: scale(1.2);
         }
 
-        /* 5. SOBRE NÓS */
+        /* SEÇÃO SOBRE NÓS */
         #sobre {
             padding: 120px 0;
             background-color: var(--black-pure);
@@ -230,13 +245,14 @@
             left: 25%;
         }
 
-        /* 6. PAUTAS (Manifesto e Cards) */
+        /* SEÇÃO DE PAUTAS (Manifesto e Cards) */
         #pautas {
             padding: 100px 0;
             background-color: var(--black-surface);
             border-top: 1px solid var(--gray-dark);
         }
 
+        /* GRID RESPONSIVO PARA CARDS (Pautas e Ebooks) */
         .grids-3 {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -269,7 +285,7 @@
             text-align: justify;
         }
 
-        /* 7. EBOOKS */
+        /* SEÇÃO DE EBOOKS (LIVRARIA) */
         #ebooks {
             padding: 100px 0;
             background-color: var(--black-pure);
@@ -305,6 +321,7 @@
             flex-grow: 1;
         }
 
+        /* BOTÃO DE COMPRA DA KIWIFY */
         .btn-comprar {
             margin-top: 20px;
             padding: 15px;
@@ -321,7 +338,7 @@
             background-color: var(--gray-text);
         }
 
-        /* 8. LOJA (Em Breve com Animação) */
+        /* SEÇÃO LOJA (Em Breve com Animação) */
         #loja {
             padding: 150px 0;
             background-color: var(--black-surface);
@@ -365,7 +382,7 @@
             }
         }
 
-        /* 9. FOOTER */
+        /* FOOTER (RODAPÉ) */
         footer {
             background-color: var(--black-pure);
             padding: 60px 0 20px 0;
@@ -384,7 +401,7 @@
             font-family: var(--font-ui);
         }
 
-        /* 10. ANIMAÇÕES SCROLL */
+        /* CLASSES UTILITÁRIAS (ANIMAÇÕES SCROLL) */
         .fade-in {
             opacity: 0;
             transform: translateY(40px);
@@ -396,7 +413,9 @@
             transform: translateY(0);
         }
 
-        /* 11. RESPONSIVIDADE MOBILE OTIMIZADA (O Pulo do Gato) */
+        /* =========================================
+           MEDIA QUERIES (RESPONSIVIDADE MOBILE)
+           ========================================= */
         @media (max-width: 768px) {
             
             /* Ajuste de espaçamento para ganhar área útil na tela pequena */
@@ -493,6 +512,7 @@
 </head>
 <body>
 
+    <!-- BARRA DE NAVEGAÇÃO SUPERIOR -->
     <nav class="navbar">
         <div class="container nav-container">
             <a href="#inicio" class="logo">StA</a>
@@ -509,6 +529,7 @@
         </div>
     </nav>
 
+    <!-- SEÇÃO HERO (BOAS VINDAS) -->
     <header id="inicio">
         <div class="hero-overlay"></div>
         <div class="container hero-content fade-in">
@@ -522,6 +543,7 @@
         </div>
     </header>
 
+    <!-- SEÇÃO SOBRE NÓS -->
     <section id="sobre">
         <div class="container fade-in sobre-wrapper">
             <h2 class="section-title">Sobre nós</h2>
@@ -540,6 +562,7 @@
         </div>
     </section>
 
+    <!-- SEÇÃO DE PAUTAS E MANIFESTO -->
     <section id="pautas">
         <div class="container">
             <div class="fade-in text-center" style="text-align: center; margin-bottom: 40px;">
@@ -550,6 +573,7 @@
                 <p><strong>O Estado é laico.</strong> Todos os dias, assistimos sistematicamente à tentativa de aparelhamento das instituições por bancadas que buscam impor dogmas. Acreditamos que a fé é uma prerrogativa íntima, sendo inaceitável o seu uso como instrumento de coerção política. Nosso norte é a construção de uma sociedade onde a integridade intelectual e a liberdade individual sejam os únicos parâmetros inquestionáveis.</p>
             </div>
 
+            <!-- GRID COM OS 3 PILARES -->
             <div class="grids-3">
                 <div class="card fade-in">
                     <i class="fas fa-face-flushed card-icon"></i>
@@ -570,6 +594,7 @@
         </div>
     </section>
 
+    <!-- SEÇÃO DE CATÁLOGO DE EBOOKS -->
     <section id="ebooks">
         <div class="container">
             <div class="fade-in text-center" style="text-align: center; margin-bottom: 40px;">
@@ -577,7 +602,10 @@
                 <p style="margin-top: 10px;">Obras estratégicas para o desenvolvimento intelectual e o embate cético.</p>
             </div>
 
+            <!-- GRID DOS EBOOKS -->
             <div class="grids-3">
+                
+                <!-- LIVRO 1 -->
                 <div class="ebook-card fade-in">
                     <img src="https://aws-assets.kiwify.com.br/cdn-cgi/image/fit=scale-down,width=600/iWRlDEE5hlcksuA/1000070140_11bc59454a65445995425be2743da2f8.png" alt="Amém Pra Quem?" class="ebook-cover" onerror="this.onerror=null; this.src='https://via.placeholder.com/600x800/141414/a0a0a0?text=AM%C3%89M+PRA+QUEM'">
                     <div class="ebook-info">
@@ -586,6 +614,7 @@
                     </div>
                 </div>
 
+                <!-- LIVRO 2 -->
                 <div class="ebook-card fade-in">
                     <img src="https://aws-assets.kiwify.com.br/cdn-cgi/image/fit=scale-down,width=600/iWRlDEE5hlcksuA/1000062020_82e5825cb82841d48d4abdbf362d3778.jpg" alt="Como Debater Com Crente" class="ebook-cover" onerror="this.onerror=null; this.src='https://via.placeholder.com/600x800/141414/a0a0a0?text=COMO+DEBATER'">
                     <div class="ebook-info">
@@ -594,6 +623,7 @@
                     </div>
                 </div>
 
+                <!-- LIVRO 3 -->
                 <div class="ebook-card fade-in">
                     <img src="https://aws-assets.kiwify.com.br/cdn-cgi/image/fit=scale-down,width=600/iWRlDEE5hlcksuA/1000064954_830156b1cade43baa241bb68e753e820.jpg" alt="Deus Realmente Existe?" class="ebook-cover" onerror="this.onerror=null; this.src='https://via.placeholder.com/600x800/141414/a0a0a0?text=DEUS+EXISTE'">
                     <div class="ebook-info">
@@ -601,10 +631,21 @@
                         <a href="https://pay.kiwify.com.br/16qYa6D" target="_blank" class="btn-comprar">Comprar</a>
                     </div>
                 </div>
-            </div>
-        </div>
+                
+                <!-- LIVRO 4 (NOVO ADICIONADO) -->
+                <div class="ebook-card fade-in">
+                    <img src="https://aws-assets.kiwify.com.br/iWRlDEE5hlcksuA/Duck-ai-image-2026-07-11-04-25_6da36f5bf61b47ee8b52be70cf000ded.jpeg" alt="Jogando Xadrez com Pombo" class="ebook-cover" onerror="this.onerror=null; this.src='https://via.placeholder.com/600x800/141414/a0a0a0?text=JOGANDO+XADREZ+COM+POMBO'">
+                    <div class="ebook-info">
+                        <h3>JOGANDO XADREZ COM POMBO</h3>
+                        <a href="https://pay.kiwify.com.br/DJzH37x" target="_blank" class="btn-comprar">Comprar</a>
+                    </div>
+                </div>
+
+            </div> <!-- Fechamento da div grids-3 -->
+        </div> <!-- Fechamento do container principal de ebooks -->
     </section>
 
+    <!-- SEÇÃO LOJA FÍSICA / MERCH -->
     <section id="loja">
         <div class="container loja-container fade-in">
             <i class="fas fa-shopping-bag loja-icon"></i>
@@ -613,6 +654,7 @@
         </div>
     </section>
 
+    <!-- RODAPÉ DA PÁGINA -->
     <footer>
         <div class="container fade-in">
             <div class="footer-brand">
@@ -626,8 +668,9 @@
         </div>
     </footer>
 
+    <!-- SCRIPTS DE LÓGICA E INTERAÇÃO -->
     <script>
-        // 1. Menu Mobile (Hamburger)
+        // 1. LÓGICA DO MENU MOBILE (Hamburger)
         const hamburger = document.querySelector('.hamburger');
         const navLinks = document.querySelector('.nav-links');
         
@@ -635,7 +678,7 @@
             navLinks.classList.toggle('active');
         });
 
-        // 2. Fechar menu mobile ao clicar em um link
+        // 2. Fechar menu mobile automaticamente ao clicar em um link
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 if(navLinks.classList.contains('active')) {
@@ -644,7 +687,7 @@
             });
         });
 
-        // 3. Observer para Animação de Fade-In
+        // 3. LÓGICA DE FADE-IN (Aparecer ao rolar a página)
         const faders = document.querySelectorAll('.fade-in');
         const appearOptions = {
             threshold: 0.15,
@@ -661,7 +704,7 @@
         faders.forEach(fader => appearOnScroll.observe(fader));
 
         // =========================================================
-        // SISTEMA DE BLOQUEIO DE AÇÕES DO USUÁRIO
+        // SISTEMA DE BLOQUEIO DE AÇÕES DO USUÁRIO (ANTIFURTO DE CÓDIGO)
         // =========================================================
 
         // 1. Bloqueia o clique do botão direito (Context Menu)
@@ -669,20 +712,14 @@
             event.preventDefault();
         });
 
-        // 2. Intercepta e bloqueia atalhos de teclado específicos
+        // 2. Intercepta e bloqueia atalhos de teclado específicos (F12, Inspecionar, Copiar)
         document.addEventListener('keydown', function(event) {
-            // Verifica se a tecla Ctrl (Windows/Linux) ou Cmd (Mac) está pressionada
             if (event.ctrlKey || event.metaKey) {
                 const key = event.key.toLowerCase();
-                
-                // Bloqueia Ctrl+A (Selecionar tudo), Ctrl+C (Copiar), Ctrl+X (Cortar)
-                // Também bloqueia Ctrl+S (Salvar página) e Ctrl+U (Ver código-fonte)
                 if (['a', 'c', 'x', 's', 'u'].includes(key)) {
                     event.preventDefault();
                 }
             }
-            
-            // Bloqueia a tecla F12 (Inspecionar Elemento / DevTools)
             if (event.key === 'F12') {
                 event.preventDefault();
             }
